@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: pd-infra
+  identifier: pdinfra
+  orgIdentifier: default
+  projectIdentifier: SFTY_Training
+  environmentRef: pdtestenv
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: pdk8scluster
+    namespace: default
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
