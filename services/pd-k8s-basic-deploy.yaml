@@ -1,0 +1,26 @@
+service:
+  name: pd-k8s-basic-deploy
+  identifier: webapplication
+  orgIdentifier: default
+  projectIdentifier: SFTY_Training
+  gitOpsEnabled: false
+  serviceDefinition:
+    spec:
+      manifests:
+        - manifest:
+            identifier: pdk8smanifes
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: pavandathgithub
+                  gitFetchType: Branch
+                  paths:
+                    - harness.yaml
+                  repoName: k8s-yaml-files
+                  branch: main
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+              optionalValuesYaml: false
+    type: Kubernetes
