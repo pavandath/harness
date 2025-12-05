@@ -1,0 +1,7 @@
+environment:
+  name: pd-test-env
+  identifier: pdtestenv
+  tags: {}
+  type: PreProduction
+  orgIdentifier: default
+  projectIdentifier: SFTY_Training
