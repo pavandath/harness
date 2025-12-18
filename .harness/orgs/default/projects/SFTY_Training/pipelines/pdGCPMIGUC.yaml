@@ -70,6 +70,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
+                      sudo chmod +x inventory.py 
                       ansible-inventory -i inventory.py --list
 
 
