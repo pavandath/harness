@@ -54,7 +54,7 @@ pipeline:
             override: false
           platform:
             os: Linux
-            arch: Amd64
+            arch: Arm64
           runtime:
             type: Cloud
             spec:
@@ -78,5 +78,5 @@ pipeline:
     ci:
       codebase:
         connectorRef: pavandathgithub
-        repoName: https://github.com/pavandath/ansible.git
+        repoName: ansible
         build: <+input>
