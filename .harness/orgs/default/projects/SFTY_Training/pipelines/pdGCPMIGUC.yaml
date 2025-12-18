@@ -22,6 +22,13 @@ pipeline:
             steps:
               - step:
                   type: IACMTerraformPlugin
+                  name: IACMTerraformPlugin_2
+                  identifier: IACMTerraformPlugin_2
+                  spec:
+                    command: init
+                  timeout: 10m
+              - step:
+                  type: IACMTerraformPlugin
                   name: IACMTerraformPlugin_1
                   identifier: IACMTerraformPlugin_1
                   spec:
