@@ -36,38 +36,8 @@ pipeline:
                     command: plan
               - step:
                   type: IACMTerraformPlugin
-                  name: apply
-                  identifier: apply
-                  timeout: 10m
-                  spec:
-                    command: apply
-              - step:
-                  type: IACMTerraformPlugin
                   name: IACMTerraformPlugin_4
                   identifier: IACMTerraformPlugin_4
-                  spec:
-                    command: destroy
-                  timeout: 1h
-        tags: {}
-    - stage:
-        name: destroy
-        identifier: destroy
-        description: ""
-        type: IACM
-        spec:
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          workspace: pdmiggcp
-          execution:
-            steps:
-              - step:
-                  type: IACMTerraformPlugin
-                  name: IACMTerraformPlugin_1
-                  identifier: IACMTerraformPlugin_1
                   spec:
                     command: destroy
                   timeout: 1h
