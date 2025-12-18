@@ -29,13 +29,6 @@ pipeline:
                     command: init
               - step:
                   type: IACMTerraformPlugin
-                  name: plan
-                  identifier: plan
-                  timeout: 10m
-                  spec:
-                    command: plan
-              - step:
-                  type: IACMTerraformPlugin
                   name: IACMTerraformPlugin_4
                   identifier: IACMTerraformPlugin_4
                   spec:
