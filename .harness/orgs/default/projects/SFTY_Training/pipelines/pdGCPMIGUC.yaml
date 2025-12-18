@@ -21,24 +21,10 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: IACMOpenTofuPlugin
-                  name: init
-                  identifier: init
-                  timeout: 10m
+                  type: IACMTerraformPlugin
+                  name: IACMTerraformPlugin_1
+                  identifier: IACMTerraformPlugin_1
                   spec:
-                    command: init
-              - step:
-                  type: IACMOpenTofuPlugin
-                  name: plan
-                  identifier: plan
-                  timeout: 10m
-                  spec:
-                    command: plan
-              - step:
-                  type: IACMOpenTofuPlugin
-                  name: apply
-                  identifier: apply
-                  timeout: 10m
-                  spec:
-                    command: apply
+                    command: destroy
+                  timeout: 1h
         tags: {}
