@@ -42,3 +42,41 @@ pipeline:
                   spec:
                     command: apply
         tags: {}
+    - stage:
+        name: ansible
+        identifier: ansible
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: false
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec:
+              size: flex
+              imageSpec:
+                imageName: ubuntu-24
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: |-
+                      ansible-inventory -i inventory.py --list
+
+
+                      ansible-playbook -i inventory.py playbook.yml
+  properties:
+    ci:
+      codebase:
+        connectorRef: pavandathgithub
+        repoName: https://github.com/pavandath/ansible.git
+        build: <+input>
