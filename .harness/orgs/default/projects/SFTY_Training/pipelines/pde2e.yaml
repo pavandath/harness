@@ -1,0 +1,43 @@
+pipeline:
+  name: pd-e2e
+  identifier: pde2e
+  projectIdentifier: SFTY_Training
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: pavandathgithub
+        repoName: spring-petclinic
+        build: <+input>
+  stages:
+    - stage:
+        name: spring-build
+        identifier: springbuild
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: false
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec:
+              size: flex
+              imageSpec:
+                imageName: ubuntu-24
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: pddockerhub
+                    image: maven:3.9-eclipse-temurin-21
+                    shell: Sh
+                    command: mvn clean package -Dskiptests
