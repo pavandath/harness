@@ -4,16 +4,10 @@ pipeline:
   projectIdentifier: SFTY_Training
   orgIdentifier: default
   tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: pavandathgithub
-        repoName: spring-petclinic
-        build: <+input>
   stages:
     - stage:
-        name: spring-build
-        identifier: springbuild
+        name: SonarQube
+        identifier: SonarQube
         description: ""
         type: CI
         spec:
@@ -33,11 +27,27 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
+                  type: Sonarqube
+                  name: Sonarqube_1
+                  identifier: Sonarqube_1
                   spec:
-                    connectorRef: pddockerhub
-                    image: maven:3.9-eclipse-temurin-21
-                    shell: Sh
-                    command: mvn clean package -DskipTests -Dcheckstyle.skip=true
+                    mode: orchestration
+                    config: default
+                    target:
+                      type: repository
+                      detection: manual
+                      name: sonar
+                      variant: main
+                    advanced:
+                      log:
+                        level: info
+                    auth:
+                      access_token: b471f17e14246ce10f8f852d7b308f11e8be246a
+                      domain: sonarcloud.io
+                      ssl: true
+  properties:
+    ci:
+      codebase:
+        connectorRef: pavandathgithub
+        repoName: spring-petclinic
+        build: <+input>
