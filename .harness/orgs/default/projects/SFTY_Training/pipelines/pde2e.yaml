@@ -42,9 +42,11 @@ pipeline:
                       log:
                         level: info
                     auth:
-                      access_token: sqp_9bf48e11fb4f6a25ae41576016eb47d915150906
-                      domain: http://34.121.101.248:9000/
+                      access_token: sqp_67f87e20480e5d4037760181566f5e8553373fe3
+                      domain: http://34.121.101.248:9000
                       ssl: false
+                    tool:
+                      project_key: harness
   properties:
     ci:
       codebase:
