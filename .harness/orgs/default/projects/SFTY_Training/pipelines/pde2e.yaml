@@ -27,26 +27,16 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Sonarqube
-                  name: Sonarqube_1
-                  identifier: Sonarqube_1
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
                   spec:
-                    mode: orchestration
-                    config: default
-                    target:
-                      type: repository
-                      detection: manual
-                      name: sonar
-                      variant: main
-                    advanced:
-                      log:
-                        level: info
-                    auth:
-                      access_token: sqp_67f87e20480e5d4037760181566f5e8553373fe3
-                      domain: http://34.121.101.248:9000
-                      ssl: false
-                    tool:
-                      project_key: harness
+                    shell: Sh
+                    command: |-
+                      mvn clean verify sonar:sonar \
+                        -Dsonar.projectKey=harness \
+                        -Dsonar.host.url=http://34.121.101.248:9000 \
+                        -Dsonar.login=sqp_67f87e20480e5d4037760181566f5e8553373fe3
   properties:
     ci:
       codebase:
