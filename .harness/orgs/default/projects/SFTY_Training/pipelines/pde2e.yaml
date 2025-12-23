@@ -38,6 +38,23 @@ pipeline:
                         -Dsonar.host.url=http://34.121.101.248:9000 \
                         -Dsonar.login=sqp_67f87e20480e5d4037760181566f5e8553373fe3 \
                         -Dskiptests
+              - step:
+                  type: Sonarqube
+                  name: Sonarqube_1
+                  identifier: Sonarqube_1
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      type: repository
+                      detection: auto
+                    advanced:
+                      log:
+                        level: info
+                    auth:
+                      access_token: sqp_658901763d3ad66220f8e4b8a861113c3f558633
+                      domain: "121233"
+                      ssl: true
   properties:
     ci:
       codebase:
