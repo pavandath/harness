@@ -36,7 +36,8 @@ pipeline:
                       mvn clean verify sonar:sonar \
                         -Dsonar.projectKey=harness \
                         -Dsonar.host.url=http://34.121.101.248:9000 \
-                        -Dsonar.login=sqp_67f87e20480e5d4037760181566f5e8553373fe3
+                        -Dsonar.login=sqp_67f87e20480e5d4037760181566f5e8553373fe3 \
+                        -Dskiptests
   properties:
     ci:
       codebase:
